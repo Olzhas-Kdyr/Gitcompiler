@@ -128,7 +128,6 @@ jobs:
           export SUBARCH=arm64
           export KBUILD_BUILD_USER="olzhas"
           export KBUILD_BUILD_HOST="ubuntu"
-          export KBUILD_BUILD_TIMESTAMP="$(TZ=Asia/Atyrau LC_TIME=C date)"
 
           export LD=ld.lld
           export AR=llvm-ar
