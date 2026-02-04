@@ -128,6 +128,7 @@ jobs:
           export SUBARCH=arm64
           export KBUILD_BUILD_USER="olzhas"
           export KBUILD_BUILD_HOST="ubuntu"
+          export KBUILD_BUILD_TIMESTAMP="$(TZ=Asia/Atyrau LC_TIME=C date)"
 
           export LD=ld.lld
           export AR=llvm-ar
@@ -141,7 +142,7 @@ jobs:
           export LLVM_IAS=1
           
           make O=out vendor/munch_defconfig
-          make V=1 O=out CC=clang -j$(nproc --all) \
+          make O=out CC=clang -j$(nproc --all) \
             CROSS_COMPILE=aarch64-linux-gnu- \
             CROSS_COMPILE_COMPAT=arm-linux-gnueabi- \
             LLVM=1 LLVM_IAS=1 \
@@ -177,7 +178,7 @@ jobs:
 
       - name: Define ZIP Name
         run: |
-          export TZ='Asia/Jakarta'
+          export TZ='Asia/Atyrau'
           COMPILED_DATE=$(date +%Y%m%d)
           BRANCH_NAME="${{ env.KERNEL_BRANCH }}"
           VERSION="${{ github.event.inputs.VERSION }}"
