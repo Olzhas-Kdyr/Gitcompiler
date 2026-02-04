@@ -1,4 +1,4 @@
-name: Build Perf+ (dev2)
+name: Build Oxygen+
 
 on:
   workflow_dispatch:
