@@ -12,19 +12,19 @@ jobs:
     steps:
       - name: Clone Kernel Source
         run: |
-          git clone https://github.com/Olzhas-Kdyr/kernel_xiaomi_sm8250 -b e404bpf ${{ github.workspace }}/kernel_xiaomi_sm8250 --depth=1
+          git clone https://github.com/Olzhas-Kdyr/kernel_xiaomi_sm8250 ${{ github.workspace }}/kernel_xiaomi_sm8250 --depth=1
 
       - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y flex bc bison python-is-python3 cpio gcc gcc-aarch64-linux-gnu ccache p7zip-full lld
+          sudo apt-get install -y flex bc bison gcc gcc-aarch64-linux-gnu ccache p7zip-full lld
 
       - name: Clone AOSP Clang && Build Kernel
         run: |
           cd kernel_xiaomi_sm8250
           git submodule update --init
-          chmod +x compile.sh
-          ./compile.sh
+          chmod +x build.sh
+          ./build.sh
         env:
           TGTOKEN: ${{ secrets.TGTOKEN }}
           
